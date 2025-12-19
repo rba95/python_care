@@ -1,0 +1,100 @@
+2025-12-15 16:08:54 db-master cron[6466]: WARNING échec d'authentification utilisateur alice
+2025-12-15 16:08:54 db-replica nginx[4125]: WARNING redémarrage du service nginx
+2025-12-15 16:08:54 srv-web01 postgres[9197]: CRITICAL redémarrage du service postgres
+2025-12-15 16:08:55 db-master postgres[7870]: CRITICAL erreur I/O sur disque /dev/sdb
+2025-12-15 16:08:55 fw1 sshd[6125]: CRITICAL échec d'authentification utilisateur guest
+2025-12-15 16:08:55 srv-web02 postgres[6876]: INFO erreur I/O sur disque /dev/sdb
+2025-12-15 16:08:55 fw1 systemd[9445]: INFO paquet dropped par firewall
+2025-12-15 16:08:56 srv-web02 postgres[8958]: CRITICAL paquet dropped par firewall
+2025-12-15 16:08:56 db-replica cron[4828]: ERROR erreur I/O sur disque /dev/sda1
+2025-12-15 16:08:56 srv-web01 cron[1472]: ERROR échec d'authentification utilisateur guest
+2025-12-15 16:08:58 srv-web01 nginx[4518]: ERROR connexion acceptée depuis 57.89.241.208
+2025-12-15 16:08:58 fw1 nginx[4727]: INFO connexion acceptée depuis 44.121.199.226
+2025-12-15 16:08:59 fw1 postgres[7060]: CRITICAL erreur I/O sur disque /dev/sdb
+2025-12-15 16:09:00 srv-web01 nginx[9086]: INFO latence élevée: 948.8 ms
+2025-12-15 16:09:01 db-master cron[9975]: WARNING paquet dropped par firewall
+2025-12-15 16:09:01 srv-web02 systemd[6253]: ERROR latence élevée: 797.1 ms
+2025-12-15 16:09:01 db-replica postgres[3667]: INFO erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:02 db-replica postgres[5583]: CRITICAL erreur I/O sur disque /dev/sda1
+2025-12-15 16:09:02 srv-web01 sshd[4638]: INFO paquet dropped par firewall
+2025-12-15 16:09:03 srv-web02 cron[1352]: ERROR connexion acceptée depuis 248.4.239.169
+2025-12-15 16:09:03 srv-web02 sshd[3246]: CRITICAL latence élevée: 54.4 ms
+2025-12-15 16:09:03 db-replica sshd[1947]: WARNING échec d'authentification utilisateur admin
+2025-12-15 16:09:04 db-master systemd[8454]: CRITICAL erreur I/O sur disque /dev/sdb
+2025-12-15 16:09:05 db-replica nginx[6441]: ERROR échec d'authentification utilisateur guest
+2025-12-15 16:09:05 srv-web01 postgres[6138]: WARNING erreur I/O sur disque /dev/sda1
+2025-12-15 16:09:06 fw1 postgres[5992]: INFO redémarrage du service postgres
+2025-12-15 16:09:08 fw1 cron[7292]: ERROR connexion acceptée depuis 182.51.57.142
+2025-12-15 16:09:08 srv-web01 postgres[2812]: WARNING redémarrage du service postgres
+2025-12-15 16:09:10 srv-web01 postgres[7965]: CRITICAL latence élevée: 811.5 ms
+2025-12-15 16:09:10 db-replica systemd[1626]: WARNING connexion acceptée depuis 71.47.108.166
+2025-12-15 16:09:11 srv-web01 sshd[8838]: WARNING latence élevée: 337.5 ms
+2025-12-15 16:09:11 srv-web01 nginx[2108]: CRITICAL connexion acceptée depuis 88.40.163.199
+2025-12-15 16:09:11 db-replica nginx[2651]: CRITICAL erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:13 srv-web01 postgres[8737]: WARNING paquet dropped par firewall
+2025-12-15 16:09:14 fw1 cron[4055]: CRITICAL latence élevée: 769.6 ms
+2025-12-15 16:09:15 fw1 sshd[9034]: CRITICAL échec d'authentification utilisateur bob
+2025-12-15 16:09:16 srv-web02 systemd[9360]: CRITICAL paquet dropped par firewall
+2025-12-15 16:09:16 db-master nginx[1496]: WARNING paquet dropped par firewall
+2025-12-15 16:09:17 srv-web01 sshd[8530]: INFO paquet dropped par firewall
+2025-12-15 16:09:18 db-master cron[9735]: INFO redémarrage du service cron
+2025-12-15 16:09:18 fw1 cron[7581]: ERROR erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:19 fw1 sshd[1574]: INFO échec d'authentification utilisateur monitor
+2025-12-15 16:09:19 db-replica systemd[1207]: ERROR paquet dropped par firewall
+2025-12-15 16:09:20 srv-web02 nginx[9260]: ERROR latence élevée: 986.4 ms
+2025-12-15 16:09:20 fw1 cron[4419]: ERROR erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:21 db-master systemd[8701]: ERROR connexion acceptée depuis 172.51.84.84
+2025-12-15 16:09:21 db-master postgres[3442]: WARNING paquet dropped par firewall
+2025-12-15 16:09:22 fw1 sshd[1368]: WARNING paquet dropped par firewall
+2025-12-15 16:09:22 fw1 cron[3452]: CRITICAL paquet dropped par firewall
+2025-12-15 16:09:22 db-master systemd[3684]: CRITICAL latence élevée: 724.1 ms
+2025-12-15 16:09:23 srv-web01 sshd[8123]: WARNING erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:24 db-replica nginx[4215]: CRITICAL redémarrage du service nginx
+2025-12-15 16:09:25 db-replica cron[5231]: CRITICAL latence élevée: 1961.5 ms
+2025-12-15 16:09:25 db-replica sshd[9685]: ERROR paquet dropped par firewall
+2025-12-15 16:09:26 srv-web01 cron[1657]: CRITICAL erreur I/O sur disque /dev/sda1
+2025-12-15 16:09:27 srv-web02 cron[2889]: WARNING paquet dropped par firewall
+2025-12-15 16:09:27 fw1 sshd[4412]: CRITICAL redémarrage du service sshd
+2025-12-15 16:09:27 db-replica postgres[1367]: WARNING connexion acceptée depuis 131.63.3.33
+2025-12-15 16:09:27 db-replica systemd[4829]: CRITICAL échec d'authentification utilisateur bob
+2025-12-15 16:09:28 db-replica cron[8289]: CRITICAL connexion acceptée depuis 243.20.158.201
+2025-12-15 16:09:28 srv-web01 nginx[2345]: ERROR redémarrage du service nginx
+2025-12-15 16:09:29 db-replica cron[2962]: ERROR paquet dropped par firewall
+2025-12-15 16:09:29 srv-web01 postgres[4803]: ERROR connexion acceptée depuis 141.33.45.176
+2025-12-15 16:09:30 srv-web02 sshd[3247]: WARNING latence élevée: 812.0 ms
+2025-12-15 16:09:30 srv-web02 postgres[5136]: INFO échec d'authentification utilisateur admin
+2025-12-15 16:09:30 fw1 postgres[2086]: CRITICAL paquet dropped par firewall
+2025-12-15 16:09:32 srv-web02 systemd[7354]: CRITICAL paquet dropped par firewall
+2025-12-15 16:09:33 db-replica postgres[4533]: INFO échec d'authentification utilisateur monitor
+2025-12-15 16:09:34 srv-web01 sshd[2508]: CRITICAL échec d'authentification utilisateur bob
+2025-12-15 16:09:34 db-replica nginx[4525]: ERROR redémarrage du service nginx
+2025-12-15 16:09:35 srv-web02 nginx[2060]: WARNING latence élevée: 1078.1 ms
+2025-12-15 16:09:35 db-replica cron[8585]: INFO latence élevée: 970.1 ms
+2025-12-15 16:09:35 db-master sshd[8354]: ERROR latence élevée: 718.2 ms
+2025-12-15 16:09:36 srv-web01 nginx[8366]: INFO échec d'authentification utilisateur admin
+2025-12-15 16:09:36 fw1 systemd[5724]: INFO erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:38 srv-web02 cron[8057]: WARNING connexion acceptée depuis 2.236.101.125
+2025-12-15 16:09:40 srv-web01 sshd[9911]: WARNING erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:40 db-master nginx[2755]: INFO erreur I/O sur disque /dev/sdb
+2025-12-15 16:09:41 fw1 postgres[9740]: WARNING redémarrage du service postgres
+2025-12-15 16:09:41 db-master cron[2512]: ERROR latence élevée: 1283.1 ms
+2025-12-15 16:09:42 db-replica systemd[7792]: WARNING connexion acceptée depuis 161.177.195.113
+2025-12-15 16:09:43 db-master sshd[5483]: INFO paquet dropped par firewall
+2025-12-15 16:09:43 srv-web02 systemd[8038]: CRITICAL connexion acceptée depuis 7.89.10.103
+2025-12-15 16:09:44 db-replica cron[9175]: WARNING connexion acceptée depuis 7.194.136.213
+2025-12-15 16:09:44 db-master cron[6651]: INFO échec d'authentification utilisateur admin
+2025-12-15 16:09:46 srv-web01 cron[1688]: CRITICAL paquet dropped par firewall
+2025-12-15 16:09:46 fw1 cron[6137]: WARNING erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:48 srv-web02 nginx[1953]: ERROR latence élevée: 1185.9 ms
+2025-12-15 16:09:48 srv-web02 cron[9315]: ERROR paquet dropped par firewall
+2025-12-15 16:09:48 fw1 cron[9166]: WARNING erreur I/O sur disque /dev/nvme0n1
+2025-12-15 16:09:49 db-master systemd[2646]: INFO redémarrage du service systemd
+2025-12-15 16:09:50 db-master systemd[2604]: ERROR paquet dropped par firewall
+2025-12-15 16:09:50 db-replica nginx[1200]: CRITICAL latence élevée: 1574.8 ms
+2025-12-15 16:09:50 fw1 nginx[5207]: ERROR redémarrage du service nginx
+2025-12-15 16:09:51 db-replica cron[7457]: ERROR redémarrage du service cron
+2025-12-15 16:09:52 srv-web02 sshd[4176]: ERROR redémarrage du service sshd
+2025-12-15 16:09:53 srv-web02 postgres[1885]: INFO erreur I/O sur disque /dev/sdb
+2025-12-15 16:09:53 srv-web02 sshd[4163]: WARNING échec d'authentification utilisateur alice
+2025-12-15 16:09:54 srv-web01 cron[6437]: CRITICAL erreur I/O sur disque /dev/sdb
+2025-12-15 16:09:54 db-replica cron[1785]: ERROR latence élevée: 1227.2 ms
