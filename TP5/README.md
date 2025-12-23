@@ -1,54 +1,50 @@
 # TP5 : Tableau de bord de surveillance système
 
-Ce projet consiste en la création d'un outil de monitoring en temps réel écrit en Python. Il permet de visualiser l'état des ressources de la machine (Processeur, RAM, Disques, Réseau) directement dans le terminal.
+Ce projet est un outil de monitoring en temps réel pour le terminal. Il utilise Python pour récupérer et afficher l'état des ressources de la machine (Processeur, RAM, Disques, Réseau) via une interface textuelle dynamique.
 
-## Objectifs du TP
+## Objectifs
 
-[cite_start]L'objectif principal est d'apprendre à interagir avec les données bas niveau du système d'exploitation via la bibliothèque `psutil`[cite: 136]. [cite_start]Le script doit être capable d'extraire des métriques, de les formater de manière lisible pour l'humain et de les actualiser dynamiquement[cite: 141, 142].
+L'objectif est de manipuler la bibliothèque système `psutil` pour extraire des métriques bas niveau et de présenter ces données de manière lisible pour un administrateur système.
 
-## Analyse des fonctions techniques (psutil)
+## Analyse technique : La bibliothèque psutil
 
-[cite_start]Conformément aux consignes du TP, voici l'explication technique des fonctions clés de la bibliothèque `psutil` utilisées pour récupérer les métriques brutes[cite: 149].
+Le script s'appuie sur quatre fonctions clés de la bibliothèque pour auditer le système :
 
 ### 1. psutil.cpu_percent()
-Cette fonction retourne un nombre flottant représentant l'utilisation actuelle du processeur en pourcentage.
-* **Fonctionnement :** Elle compare les temps d'activité du système entre deux intervalles.
-* [cite_start]**Utilisation dans le script :** Nous l'utilisons en mode non-bloquant pour obtenir la charge globale, ainsi qu'avec l'argument `percpu=True` pour obtenir le détail cœur par cœur[cite: 150].
+Cette fonction mesure la charge du processeur.
+* **Fonctionnement :** Elle calcule le pourcentage d'utilisation du CPU sur un intervalle de temps donné.
+* **Dans ce script :** Elle est utilisée pour afficher la charge globale, ainsi que la charge détaillée par cœur grâce à l'option `percpu=True`.
 
 ### 2. psutil.virtual_memory()
-Elle renvoie un objet complexe (named tuple) contenant les statistiques sur la mémoire vive (RAM).
-* [cite_start]**Données clés :** Elle fournit la mémoire totale (`total`), la mémoire utilisée (`used`) et surtout la mémoire disponible (`available`), qui est plus pertinente que la mémoire libre car elle inclut les caches libérables[cite: 151].
+Elle fournit un état complet de la mémoire vive (RAM).
+* **Données récupérées :** Le script exploite la mémoire totale, la mémoire utilisée et la mémoire disponible (cette dernière inclut le cache libérable, ce qui est plus précis que la mémoire libre).
 
 ### 3. psutil.disk_usage('/')
-Cette fonction analyse l'utilisation de l'espace disque pour une partition donnée (ici la racine `/` ou le disque principal).
-* [cite_start]**Retour :** Elle fournit l'espace total, l'espace utilisé et l'espace libre en octets, ainsi que le pourcentage d'occupation[cite: 152].
+Cette fonction analyse l'espace de stockage sur un point de montage précis.
+* **Fonctionnement :** Elle retourne l'espace total, utilisé et libre en octets. Le script parcourt toutes les partitions détectées pour afficher ces informations pour chaque disque.
 
 ### 4. psutil.net_io_counters()
-Elle récupère les statistiques globales des interfaces réseau depuis le démarrage du système.
-* [cite_start]**Données clés :** Nous exploitons principalement `bytes_sent` (octets envoyés/upload) et `bytes_recv` (octets reçus/download) pour afficher le volume de données échangées[cite: 153].
+Elle renvoie les statistiques de trafic réseau global depuis le démarrage de la machine.
+* **Utilisation :** Le script affiche le cumul des octets envoyés et reçus pour donner une indication du volume de données échangées.
 
-## Fonctionnement du Script (`monitor.py`)
+## Fonctionnement du code
 
-Le script proposé va plus loin qu'un simple affichage en implémentant plusieurs fonctionnalités avancées pour améliorer l'expérience utilisateur.
+Le script (`tp5.py`) intègre plusieurs mécanismes pour assurer un affichage fluide et interactif.
 
-### Gestion de l'affichage et du formatage
-Les données brutes fournies par le système sont souvent peu lisibles (des octets ou des flottants précis).
-* **Conversion d'unités :** La fonction `convertir_octets` transforme automatiquement les grands nombres en unités lisibles (Ko, Mo, Go, To) en divisant successivement par 1024.
-* **Visualisation graphique :** La fonction `dessiner_barre` génère une barre de progression en caractères ASCII (ex: `[██████----] 60%`). Cela permet de visualiser la charge d'un coup d'œil sans lire les chiffres.
+### Gestion de l'interface
+* **Conversion d'unités :** Une fonction utilitaire convertit les octets bruts en unités lisibles (Ko, Mo, Go) pour faciliter la lecture.
+* **Barres de progression :** Une fonction génère des barres visuelles en caractères ASCII pour représenter graphiquement les pourcentages d'utilisation.
+* **Rafraîchissement :** L'écran est effacé à chaque cycle de mise à jour (toutes les 5 secondes) en utilisant la commande système appropriée (`cls` sur Windows, `clear` sur Linux/Mac).
 
-### Gestion de la concurrence (Threading)
-Une particularité de ce script est l'utilisation du module `threading`.
-* **Problème :** La fonction `input()` qui attend que l'utilisateur tape "quit" est bloquante. Si on la mettait dans la boucle principale, le tableau de bord ne se mettrait plus à jour tant que l'utilisateur n'appuie pas sur Entrée.
-* **Solution :** La fonction `attendre_commande_quitter` est lancée dans un fil d'exécution séparé (thread). [cite_start]Elle surveille le clavier en arrière-plan sans empêcher la boucle d'affichage `afficher_tableau_de_bord` de tourner toutes les 5 secondes[cite: 165].
+### Programmation Asynchrone (Threading)
+Une particularité importante de ce script est l'utilisation du multi-threading pour gérer l'arrêt du programme.
+* **Problème :** La fonction `input()`, qui attend que l'utilisateur tape "quit", est bloquante. Si elle était placée dans la boucle principale, l'affichage ne se mettrait plus à jour.
+* **Solution :** La surveillance du clavier est déplacée dans un thread séparé (`thread_clavier`). Cela permet au programme d'écouter les commandes de l'utilisateur en arrière-plan tout en continuant de mettre à jour le tableau de bord au premier plan.
 
-### Rafraîchissement fluide
-[cite_start]Pour effacer l'écran proprement, le script détecte le système d'exploitation (`os.name`) et exécute la commande appropriée (`cls` pour Windows, `clear` pour Linux/Mac)[cite: 170].
-De plus, la pause de 5 secondes est découpée en 50 petites pauses de 0.1 seconde. Cela permet au programme de réagir presque instantanément si l'utilisateur demande l'arrêt, au lieu d'attendre la fin des 5 secondes.
-
-## Prérequis et Installation
+## Installation et Exécution
 
 Ce projet nécessite l'installation de la bibliothèque externe `psutil`.
 
-Installation :
-```bash
-pip install psutil
+1. **Installation des dépendances :**
+   ```bash
+   pip install psutil
